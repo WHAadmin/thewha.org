@@ -1,0 +1,55 @@
+name: CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone sidewinder
+        run: git clone --depth 1 --branch v0.1.7 https://github.com/Pinjontall94/sidewinder.git
+
+      - name: Install dependencies
+        working-directory: ./sidewinder
+        run: python3 -m venv venv && venv/bin/pip3 install -r requirements.txt
+
+      - name: Remove placeholder content
+        working-directory: ./sidewinder
+        run: rm -r content/ static/ template.html
+
+      - name: Populate content, static, and template
+        run: cp -r content static template.html -t $GITHUB_WORKSPACE/sidewinder
+
+      - name: Build site
+        working-directory: ./sidewinder
+        run: venv/bin/python3 src/main.py
+
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+        with:
+          path: "./sidewinder/public/"
+
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
