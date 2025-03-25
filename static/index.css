@@ -1,0 +1,105 @@
+:root {
+    /* global properties and variables */
+    --green: #5ca655;
+    --blue: #0f67ac;
+    --yellow: #fdce65;
+    font-family: sans-serif;
+    background-image: url('./BackgroundImage.jpg');
+}
+
+body {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0;
+}
+
+main {
+    margin-top: 2.5rem;
+}
+
+.nav {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav--header {
+    border: 0.2em solid var(--green);
+    /* border-bottom: none; /\* NOTE: Do we want this? *\/ */
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100svw;
+}
+
+.nav--footer {
+    flex-direction: column;
+    border-top: 1em solid var(--blue);
+    align-items: center;
+}
+
+.logo-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border-top: 1em solid var(--blue);
+    border-bottom: 1em solid var(--blue);
+}
+
+.logo-banner__logo {
+    flex: 1 1 auto;
+    max-height: 10em;
+}
+
+.logo-banner__text-mark {
+    flex: 1 1 auto;
+    min-width: 100%;
+    max-height: 3em;
+}
+
+.button {
+    color: black;
+    background-color: var(--yellow);
+    border: 0.08em solid black;
+    border-radius: 0.5em;
+    text-decoration: none;
+    padding: 0.3em 0.3em;
+    margin: 0.2em;
+}
+
+.button--green {
+    color: white;
+    background-color: var(--green);
+}
+
+.button--link {
+    border: none;
+    background-color: transparent;
+    color: var(--blue);
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.2em 0.5em;
+    border: 0.2em solid var(--green);
+    padding: 0.5em 0.5em;
+}
+
+.article__title {
+    text-align: center;
+}
+
+.article__content {
+    margin: 0.5em auto;
+}
+
+
