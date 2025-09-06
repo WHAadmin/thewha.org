@@ -3,6 +3,7 @@
     --green: #5ca655;
     --blue: #0f67ac;
     --yellow: #fdce65;
+    --wha-blue: #005da6;
     font-family: sans-serif;
     background-image: url('./BackgroundImage.jpg');
 }
@@ -77,6 +78,11 @@ main {
 .button--green {
     color: white;
     background-color: var(--green);
+}
+
+.button--blue {
+    color: white;
+    background-color: var(--wha-blue);
 }
 
 .button--link {
