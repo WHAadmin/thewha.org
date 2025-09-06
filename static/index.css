@@ -67,11 +67,11 @@ main {
 .button {
     color: black;
     background-color: var(--yellow);
-    border: 0.08em solid black;
     border-radius: 0.5em;
     text-decoration: none;
     padding: 0.3em 0.3em;
     margin: 0.2em;
+    box-shadow: 0px 0px 3px #d0c1c1;
 }
 
 .button--green {
